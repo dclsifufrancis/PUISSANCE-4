@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* gestion de corps de page */
+body {
+    width: 100%;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+/* gestion de texte H1*/
+h1 {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    margin: 2rem 0;
+}
+h2 {
+    text-transform: uppercase;
+    font-weight: 2em;
+}
+#joueurActif {
+    margin-top: 1em;
+}
+/* gestion tableau */
+table, td {
+    border: 1px solid black;
+}
+
+th, td {
+width: 3rem;
+height: 3rem;
+}
+/* gestion en tête de tableau */
+th {
+    background-color: red;
+}
+
+th:hover{
+    background-color: green;
+}
+
+#flèche img {
+    width: 100%;
+    height: auto;
+}
+/* gestion footer */
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+button {
+    width: 3rem;
+    height: 3rem;
+}
+
+button img {
+    width: 100%;
+}
+

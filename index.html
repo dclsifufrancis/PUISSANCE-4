@@ -8,20 +8,21 @@
     <title>PUISSANCE-4</title>
 </head>
 <body>
-    <header>
-        <h1>PUISSANCE 4</h1>
-    </header>
     <section>
-        <table id="grille">
+        <header>
+            <h1>Puissance 4</h1>
+        </header>
+        <div>
+            <table id="grille">
                 <tr id="flèche">
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    </tr>
+                    <th><img src="images/bas.png" alt="flècheBas"></th>
+                    <th><img src="images/bas.png" alt="flècheBas"></th>
+                    <th><img src="images/bas.png" alt="flècheBas"></th>
+                    <th><img src="images/bas.png" alt="flècheBas"></th>
+                    <th><img src="images/bas.png" alt="flècheBas"></th>
+                    <th><img src="images/bas.png" alt="flècheBas"></th>
+                    <th><img src="images/bas.png" alt="flècheBas"></th>
+                </tr>
                 <tr id="ligne1">
                     <td></td>
                     <td></td>
@@ -85,16 +86,22 @@
                     <td></td>
                     <td></td>
                 </tr>
+            </table>
+        </div>
+        <!-- div qui contient le joueur actif -->
+        <div id="joueurActif">
+            <H2>Joueur</H2>
+        </div>
+        <!-- div qui contient les 2 boutons retour et nouvelle partie -->
+        <footer>
+            <div>
+            <button id="retour"><img src="./images/retour.png" alt="flècheRetour"></button>
+            </div>
+            <div>
+            <button id="nouvellePartie"><img src="./images/ng.png" alt="newGame"></button>
+            </div>
+        </footer>
     </section>
-    <!-- div qui contient le joueur actif -->
-    <div>
-        <H2></H2>
-    </div>
-    <!-- div qui contient les 2 boutons retour et nouvelle partie -->
-    <footer>
-        <button id="retour"></button>
-        <button id="nouvellePartie"></button>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>
