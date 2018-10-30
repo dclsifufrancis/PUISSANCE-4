@@ -9,37 +9,42 @@ body {
 }
 
 section {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+
 }
 /* gestion de texte H1*/
 h1 {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 3em;
+    font-size: 1.5em;
     text-align: center;
     margin: 2rem 0;
 }
 h2 {
     text-transform: uppercase;
-    font-weight: 2em;
+    font-weight: 1em;
 }
+
 #joueurActif {
     margin-top: 1em;
+    transition: 2s;
 }
 /* gestion tableau */
 table, td {
     border: 1px solid black;
 }
 
-th, td {
-width: 3rem;
-height: 3rem;
+td {
+width: 1.5rem;
+height: 1.5rem;
+border-radius: 50%;
+
 }
-/* gestion en tête de tableau */
+/* gestion en tête de tableau
 th {
     background-color: red;
 }
@@ -51,7 +56,7 @@ th:hover{
 #flèche img {
     width: 100%;
     height: auto;
-}
+} */
 /* gestion footer */
 footer {
     width: 100%;
