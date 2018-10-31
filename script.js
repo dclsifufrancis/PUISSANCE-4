@@ -41,27 +41,9 @@ document.getElementById("grille").addEventListener("click", function(event){
     console.log(grille);
     console.log(clickedCellElmt);
 
-    pionY();
-    function pionY() {
-        
-        if (clickedCellCoordY == 0) {
-            pionX();
-        }else if (clickedCellCoordY == 1) {
-            pionX();
-        }else if (clickedCellCoordY == 2) {
-            pionX();
-        }else if (clickedCellCoordY == 3) {
-            pionX();
-        }else if (clickedCellCoordY == 4) {
-            pionX();
-        }else if (clickedCellCoordY == 5) {
-            pionX();
-        }else if (clickedCellCoordY == 6) {
-            pionX();
-        }
-    }   
+    pion();
 
-    function pionX() {
+    function pion() {
         if (grille[6][clickedCellCoordY] == "vide" ) {
             if (joueurActif == 1) {
                 document.getElementById("6"+ clickedCellCoordY).style.backgroundColor = "yellow";
@@ -256,7 +238,6 @@ document.getElementById("grille").addEventListener("click", function(event){
                 document.getElementById("vainqueur").style.color = "yellow";
                 document.getElementById("vainqueur").style.fontWeight = "bold";
                 document.getElementById("vainqueur").style.fontSize = "2em";
-
                 for (var i=0; i<7; i++)
                     for(var j=0; j<7; j++)
                         grille[i][j] = "plein"; 
@@ -300,9 +281,13 @@ document.getElementById("grille").addEventListener("click", function(event){
                 } 
             }
             while (grille[ligne-1][colonne] == "jaune") {
-                ligne --;
-                compteur ++;
+                if (ligne-1 != 0) {
+                    ligne --;
+                    compteur ++;
+                } else {
+                    break;
                 }
+            }
             if (compteur >= 4) {
                 document.getElementById("vainqueur").innerHTML = ("JOUEUR JAUNE WIN");
                 document.getElementById("vainqueur").style.color = "yellow";
@@ -320,11 +305,14 @@ document.getElementById("grille").addEventListener("click", function(event){
                     ligne ++;
                     break;
                 }  
-
             } 
             while (grille[ligne-1][colonne] == "rouge") {
-                ligne --;
-                compteur ++;
+                if (ligne-1 != 0) {
+                    ligne --;
+                    compteur ++;
+                } else {
+                    break;
+                }
             }
             if (compteur >= 4) {
                 document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
@@ -348,16 +336,20 @@ document.getElementById("grille").addEventListener("click", function(event){
                 if (ligne != 6 && colonne != 6) {
                     colonne ++;
                     ligne ++;
-                }else {
+                } else {
                     colonne ++;
                     ligne ++;
                     break;
                 }
             }            
                 while (grille[ligne-1][colonne-1] == "jaune") {
-                    colonne --;
-                    ligne --;
-                    compteur ++;
+                    if (ligne-1 != 0 && colonne-1 != 0) {
+                        colonne --;
+                        ligne --;
+                        compteur ++;
+                    } else {
+                        break;
+                    }
                 }
              if (compteur >= 4) {
                 document.getElementById("vainqueur").innerHTML = ("JOUEUR JAUNE WIN");
@@ -380,10 +372,14 @@ document.getElementById("grille").addEventListener("click", function(event){
                     }
                 } 
                  while (grille[ligne-1][colonne-1] == "rouge") {
-                    colonne --;
-                    ligne --;
-                     compteur ++;
-                 }
+                    if (ligne-1 != 0 && colonne-1 != 0) {
+                        colonne --;
+                        ligne --;
+                        compteur ++;
+                    } else {
+                        break;
+                    }
+                }
                  if (compteur >= 4) {
                     document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
                     document.getElementById("vainqueur").style.color = "red";
@@ -413,9 +409,13 @@ document.getElementById("grille").addEventListener("click", function(event){
                 }
             }
             while (grille[ligne-1][colonne+1] == "jaune") {
-                colonne ++;
-                ligne --;
-                compteur ++;
+                if (ligne-1 != 0 && colonne+1 != 6) {  
+                    colonne ++;
+                    ligne --;
+                    compteur ++;
+                } else {
+                    break;
+                }
             }
             if (compteur >= 4) {
                 document.getElementById("vainqueur").innerHTML = ("JOUEUR JAUNE WIN");
@@ -438,9 +438,13 @@ document.getElementById("grille").addEventListener("click", function(event){
                 }
             }
             while (grille[ligne-1][colonne+1] == "rouge") {
-                colonne ++;
-                ligne --;
-                compteur ++;
+                if (ligne-1 != 0 && colonne+1 != 6) {  
+                    colonne ++;
+                    ligne --;
+                    compteur ++;
+                } else {
+                    break;
+                }
             }
             if (compteur >= 4) {
                 document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");

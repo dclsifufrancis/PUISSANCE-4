@@ -5,6 +5,10 @@
 
 /* gestion de corps de page */
 
+html{
+    width: 100%;
+}
+
 body {
     width: 100%;
     background-color: rgb(100, 100, 100);
@@ -50,17 +54,16 @@ table, td {
 }
 
 td {
-width: 2.5rem;
-height: 2.5rem;
-border-radius: 50%;
-background-color: white
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: white
 }
 
- #flèche img {
+#flèche img {
     width: 50%;
     height: auto;
 } 
-
 
 /* gestion footer */
 
@@ -70,11 +73,11 @@ footer {
     bottom: 0;
     margin-bottom: .5rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 button {
-    width: 3rem;
+    width: 6rem;
     height: 3rem;
 }
 
@@ -82,4 +85,50 @@ button img {
     width: 100%;
     text-transform: uppercase;
 }
+
+#droite {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 1000px) {
+
+    td {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    h1 {
+        font-size: 4em;
+    }
+
+    button {
+        width: 12rem;
+        height: 6rem;
+        font-size: 2em;
+    }
+
+    section {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #droite {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #joueurActif {
+        font-size: 1.8em;
+    }
+    
+    #vainqueur {
+        font-size: 3em;
+    }
+
+}
+
+
 
