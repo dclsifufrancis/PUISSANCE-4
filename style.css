@@ -4,8 +4,10 @@
 }
 
 /* gestion de corps de page */
+
 body {
     width: 100%;
+    background-color: rgb(100, 100, 100);
 }
 
 section {
@@ -14,58 +16,61 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-
 }
+
 /* gestion de texte H1*/
+
 h1 {
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 2.5em;
     text-align: center;
     margin: 2rem 0;
 }
+
 h2 {
     text-transform: uppercase;
-    font-weight: 1em;
+    font-weight: 1.5em;
 }
 
 #joueurActif {
-    margin-top: 1em;
-    transition: 2s;
+    margin-top: 2rem;
 }
+
+#vainqueur {
+    margin-top: 2rem;
+    font-weight: bold,
+}
+
 /* gestion tableau */
+
 table, td {
     border: 1px solid black;
+    background-color: blue;
 }
 
 td {
-width: 1.5rem;
-height: 1.5rem;
+width: 2.5rem;
+height: 2.5rem;
 border-radius: 50%;
-
-}
-/* gestion en tête de tableau
-th {
-    background-color: red;
+background-color: white
 }
 
-th:hover{
-    background-color: green;
-}
-
-#flèche img {
-    width: 100%;
+ #flèche img {
+    width: 50%;
     height: auto;
-} */
+} 
+
+
 /* gestion footer */
+
 footer {
     width: 100%;
     position: absolute;
     bottom: 0;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     display: flex;
     justify-content: space-around;
-
 }
 
 button {
@@ -75,5 +80,6 @@ button {
 
 button img {
     width: 100%;
+    text-transform: uppercase;
 }
 

@@ -7,9 +7,11 @@ for (var i = 0; i < 7; i++)
  grille[i] = new Array(7);
 }
 // rempli le tableau de "vide"
-for (var i=0; i<7; i++)
-   for(var j=0; j<7; j++)
-      grille[i][j] = "vide";     
+for (var i=0; i<7; i++){
+   for(var j=0; j<7; j++){
+      grille[i][j] = "vide";
+    }  
+}   
 
 ////////////////////////////////////////////////
 
@@ -231,6 +233,10 @@ document.getElementById("grille").addEventListener("click", function(event){
  
     }
 
+
+// Conditions de victoire
+
+// verfif ligne
     function victoireLigne() {
         var compteur = 0;
         var ligne = clickedCellCoordX;
@@ -245,9 +251,18 @@ document.getElementById("grille").addEventListener("click", function(event){
                 compteur ++;
             }
             if (compteur >= 4) {
+                document.getElementById("joueurActif").innerHTML = "Relancer la partie";
                 document.getElementById("vainqueur").innerHTML = ("JOUEUR JAUNE WIN");
+                document.getElementById("vainqueur").style.color = "yellow";
+                document.getElementById("vainqueur").style.fontWeight = "bold";
+                document.getElementById("vainqueur").style.fontSize = "2em";
 
-            } else if (joueurActif == 2) {
+                for (var i=0; i<7; i++)
+                    for(var j=0; j<7; j++)
+                        grille[i][j] = "plein"; 
+            } 
+
+        } else if (joueurActif == 2) {
                
                 while (grille[ligne][colonne] == "rouge") {
                     colonne ++;
@@ -258,81 +273,111 @@ document.getElementById("grille").addEventListener("click", function(event){
                 }
                 if (compteur >= 4) {
                     document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
+                    document.getElementById("vainqueur").style.color = "red";
+                    document.getElementById("vainqueur").style.fontWeight = "bold";
+                    document.getElementById("vainqueur").style.fontSize = "2em";
+                    for (var i=0; i<7; i++)
+                        for(var j=0; j<7; j++)
+                            grille[i][j] = "plein";
                 }
-            }
         }
+        
     }
 
+// verif colonne
     function victoireColonne() {
         var compteur = 0;
         var ligne = clickedCellCoordX;
         var colonne = clickedCellCoordY;
+
         if (joueurActif == 1) {
-             
-            while (ligne != 6) {
-                while (grille[ligne][colonne] == "jaune") {
+            while (grille[ligne][colonne] == "jaune") {
+                if (ligne != 6) {
+                    ligne ++
+                }else { 
                     ligne ++;
                     break;
-                }
-                
-            } 
+                } 
+            }
             while (grille[ligne-1][colonne] == "jaune") {
                 ligne --;
                 compteur ++;
                 }
             if (compteur >= 4) {
                 document.getElementById("vainqueur").innerHTML = ("JOUEUR JAUNE WIN");
- 
-            } else if (joueurActif == 2) {
-                
-                while (ligne != 6) {
-                    while (grille[ligne][colonne] == "rouge") {
-                        ligne ++;
-                        break;
-                    }    
-                
-                } 
-                while (grille[ligne-1][colonne] == "rouge") {
-                    ligne --;
-                    compteur ++;
+                document.getElementById("vainqueur").style.color = "yellow";
+                document.getElementById("vainqueur").style.fontWeight = "bold";
+                document.getElementById("vainqueur").style.fontSize = "2em";
+                for (var i=0; i<7; i++)
+                    for(var j=0; j<7; j++)
+                        grille[i][j] = "plein";
                 }
-                if (compteur >= 4) {
-                    document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
-                }
-             }
+        } else if (joueurActif == 2) {
+            while (grille[ligne][colonne] == "rouge") {
+                if (ligne != 6) {
+                    ligne ++
+                }else { 
+                    ligne ++;
+                    break;
+                }  
+
+            } 
+            while (grille[ligne-1][colonne] == "rouge") {
+                ligne --;
+                compteur ++;
+            }
+            if (compteur >= 4) {
+                document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
+                document.getElementById("vainqueur").style.color = "red";
+                document.getElementById("vainqueur").style.fontWeight = "bold";
+                document.getElementById("vainqueur").style.fontSize = "2em";
+                for (var i=0; i<7; i++)
+                    for(var j=0; j<7; j++)
+                        grille[i][j] = "plein";
+            }
         }
     }
-
+//  verif diagonale 1
     function victoireDiag1() {
         var compteur = 0;
         var ligne = clickedCellCoordX;
         var colonne = clickedCellCoordY;
         if (joueurActif == 1) {
              
-            while (ligne != 6 && colonne != 6) {
-                while (grille[ligne][colonne] == "jaune") {
+            while (grille[ligne][colonne] == "jaune") {
+                if (ligne != 6 && colonne != 6) {
+                    colonne ++;
+                    ligne ++;
+                }else {
                     colonne ++;
                     ligne ++;
                     break;
-                    }
-                break;
-                }            
+                }
+            }            
                 while (grille[ligne-1][colonne-1] == "jaune") {
                     colonne --;
                     ligne --;
                     compteur ++;
                 }
              if (compteur >= 4) {
-                 document.getElementById("vainqueur").innerHTML = ("JOUEUR JAUNE WIN");
- 
-             } else if (joueurActif == 2) {
-                while (ligne != 6 && colonne != 6) {
-                    while (grille[ligne][colonne] == "rouge") {
+                document.getElementById("vainqueur").innerHTML = ("JOUEUR JAUNE WIN");
+                document.getElementById("vainqueur").style.color = "yellow";
+                document.getElementById("vainqueur").style.fontWeight = "bold";
+                document.getElementById("vainqueur").style.fontSize = "2em";
+                for (var i=0; i<7; i++)
+                    for(var j=0; j<7; j++)
+                        grille[i][j] = "plein";
+             }
+        } else if (joueurActif == 2) {
+                while (grille[ligne][colonne] == "rouge") {
+                    if (ligne != 6 && colonne != 6) {
+                        colonne ++;
+                        ligne ++;
+                    }else {
                         colonne ++;
                         ligne ++;
                         break;
-                        }
-                    break;
+                    }
                 } 
                  while (grille[ligne-1][colonne-1] == "rouge") {
                     colonne --;
@@ -340,24 +385,32 @@ document.getElementById("grille").addEventListener("click", function(event){
                      compteur ++;
                  }
                  if (compteur >= 4) {
-                     document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
+                    document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
+                    document.getElementById("vainqueur").style.color = "red";
+                    document.getElementById("vainqueur").style.fontWeight = "bold";
+                    document.getElementById("vainqueur").style.fontSize = "2em";
+                    for (var i=0; i<7; i++)
+                        for(var j=0; j<7; j++)
+                            grille[i][j] = "plein";
                  }
              }
-        }
+        
     }
-
+// verifie diagonale 2
     function victoireDiag2() {
         var compteur = 0;
         var ligne = clickedCellCoordX;
         var colonne = clickedCellCoordY;
          if (joueurActif == 1) {
-            while (ligne != 6 && colonne != 0) {
-                while (grille[ligne][colonne] == "jaune") {
+            while (grille[ligne][colonne] == "jaune") {
+                if (ligne != 6 && colonne != 0) {                
                     colonne --;
                     ligne ++;
+                }else {
+                    colonne --;
+                    ligne ++;    
                     break;
-                } 
-                break;
+                }
             }
             while (grille[ligne-1][colonne+1] == "jaune") {
                 colonne ++;
@@ -366,26 +419,40 @@ document.getElementById("grille").addEventListener("click", function(event){
             }
             if (compteur >= 4) {
                 document.getElementById("vainqueur").innerHTML = ("JOUEUR JAUNE WIN");
-
-            } else if (joueurActif == 2) {
-                while (ligne != 6 && colonne != 0) {
-                    while (grille[ligne][colonne] == "rouge") {
-                        colonne --;
-                        ligne ++;
-                        break;
-                    }
+                document.getElementById("vainqueur").style.color = "yellow";
+                document.getElementById("vainqueur").style.fontWeight = "bold";
+                document.getElementById("vainqueur").style.fontSize = "2em";
+                for (var i=0; i<7; i++)
+                    for(var j=0; j<7; j++)
+                        grille[i][j] = "plein";
+            }
+        } else if (joueurActif == 2) {
+            while (grille[ligne][colonne] == "rouge") {
+                if (ligne != 6 && colonne != 0) {                
+                    colonne --;
+                    ligne ++;
+                }else {
+                    colonne --;
+                    ligne ++;    
                     break;
-                } 
-                while (grille[ligne-1][colonne+1] == "rouge") {
-                    colonne ++;
-                    ligne --;
-                    compteur ++;
                 }
-                if (compteur >= 4) {
-                    document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
+            }
+            while (grille[ligne-1][colonne+1] == "rouge") {
+                colonne ++;
+                ligne --;
+                compteur ++;
+            }
+            if (compteur >= 4) {
+                document.getElementById("vainqueur").innerHTML = ("JOUEUR ROUGE WIN");
+                document.getElementById("vainqueur").style.color = "red";
+                document.getElementById("vainqueur").style.fontWeight = "bold";
+                document.getElementById("vainqueur").style.fontSize = "2em";
+                for (var i=0; i<7; i++)
+                    for(var j=0; j<7; j++)
+                        grille[i][j] = "plein";
                 }
-             }
-         }
+        }
+         
     }
 });
 
@@ -401,16 +468,34 @@ function changementJoueur() {
     if (joueur == true) {
         joueurActif = 1;
         document.getElementById("joueurActif").innerHTML = ("AU JOUEUR JAUNE DE JOUER");
+        document.getElementById("joueurActif").style.color = "yellow";
         joueur = false;
-    }else {
+    } else {
         joueurActif = 2;
         document.getElementById("joueurActif").innerHTML = ("AU JOUEUR ROUGE DE JOUER");
+        document.getElementById("joueurActif").style.color = "red";
         joueur = true;
     }
 };
 
 
-
+document.getElementById("nouvellePartie").addEventListener("click",reset);
+ function reset() {
+    for (var i=0; i<7; i++){
+        document.getElementById(i+"0").style.backgroundColor="white";
+        document.getElementById(i+"1").style.backgroundColor="white";
+        document.getElementById(i+"2").style.backgroundColor="white";
+        document.getElementById(i+"3").style.backgroundColor="white";
+        document.getElementById(i+"4").style.backgroundColor="white";
+        document.getElementById(i+"5").style.backgroundColor="white";
+        document.getElementById(i+"6").style.backgroundColor="white";
+        for(var j=0; j<7; j++){
+            grille[i][j] = "vide";
+        }
+        document.getElementById("vainqueur").innerHTML = "REVANCHE";
+        document.getElementById("vainqueur").style.color = "black";
+    }
+}
 
 
 
